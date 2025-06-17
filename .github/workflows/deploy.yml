@@ -18,6 +18,11 @@ jobs:
       with:
         ssh-private-key: ${{ secrets.EC2_SSH_KEY }}
 
+    - name: Copy code to EC2
+      run: |
+        ssh -o StrictHostKeyChecking=no ubuntu@3.92.215.237 "rm -rf /home/ubuntu/app && mkdir -p /home/ubuntu/app"
+        rsync -avz --exclude='.git' ./ ubuntu@3.92.215.237:/home/ubuntu/app
+
     - name: Install Docker on EC2 and Add Permissions
       run: |
         ssh -o StrictHostKeyChecking=no ubuntu@3.92.215.237 << 'EOF'
@@ -28,18 +33,10 @@ jobs:
           sudo systemctl start docker
         EOF
 
-    - name: Copy code to EC2
-      run: |
-        ssh -o StrictHostKeyChecking=no ubuntu@3.92.215.237 "rm -rf /home/ubuntu/app && mkdir -p /home/ubuntu/app"
-        rsync -avz --exclude='.git' ./ ubuntu@3.92.215.237:/home/ubuntu/app
-
-
-
     - name: Deploy on EC2
       run: |
         ssh -o StrictHostKeyChecking=no ubuntu@3.92.215.237 << 'EOF'
-          cd app
-          git pull
+          cd /home/ubuntu/app
           docker stop flask-app || true
           docker rm flask-app || true
           docker build -t flask-app .
