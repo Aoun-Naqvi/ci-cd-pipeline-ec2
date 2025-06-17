@@ -20,12 +20,12 @@ jobs:
 
     - name: Copy Only the app folder to EC2
       run: |
-        ssh -o StrictHostKeyChecking=no ubuntu@3.92.215.237 "rm -rf /home/ubuntu/app && mkdir -p /home/ubuntu/app"
-        rsync -avz --exclude='.git' ./app/ ubuntu@3.92.215.237:/home/ubuntu/app
+        ssh -o StrictHostKeyChecking=no ubuntu@44.211.192.73 "rm -rf /home/ubuntu/app && mkdir -p /home/ubuntu/app"
+        rsync -avz --exclude='.git' ./app/ ubuntu@44.211.192.73:/home/ubuntu/app
 
     - name: Install Docker on EC2 and Add Permissions
       run: |
-        ssh -o StrictHostKeyChecking=no ubuntu@3.92.215.237 << 'EOF'
+        ssh -o StrictHostKeyChecking=no ubuntu@44.211.192.73 << 'EOF'
           sudo apt-get update
           sudo apt-get install -y docker.io
           sudo usermod -aG docker ubuntu
@@ -35,7 +35,7 @@ jobs:
 
     - name: Deploy on EC2
       run: |
-        ssh -o StrictHostKeyChecking=no ubuntu@3.92.215.237 << 'EOF'
+        ssh -o StrictHostKeyChecking=no ubuntu@44.211.192.73 << 'EOF'
           cd /home/ubuntu/app
           docker stop flask-app || true
           docker rm flask-app || true
