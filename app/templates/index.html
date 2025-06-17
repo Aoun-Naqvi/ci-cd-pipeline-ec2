@@ -1,9 +1,78 @@
-<div style="text-align:center;">
-  <h1>Latest from Tech World</h1>
-  <img src="{{ url_for('static', filename='images/tech_blog.png') }}" alt="Latest from Tech World" style="max-width:100%; height:auto; border-radius:12px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
-  <p style="margin-top: 20px; font-size: 18px;">
-    Explore how technologies like AI, Quantum Computing, and Blockchain are reshaping industries.
-    Get insights into the latest trends, innovations, and global impact.
-  </p>
-  <footer style="margin-top: 40px; font-size: 14px; color: gray;">Deployed by Aoun</footer>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Latest from Tech World</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f4f4f4;
+      color: #333;
+    }
+    .container {
+      max-width: 800px;
+      margin: 50px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #0056b3;
+    }
+    .section {
+      margin-top: 30px;
+    }
+    .footer {
+      text-align: center;
+      font-size: 14px;
+      color: gray;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Latest from Tech World</h1>
+
+    <div class="section">
+      <h2>🔍 AI is Transforming Everything</h2>
+      <p>
+        Artificial Intelligence is being integrated into every industry — from healthcare and finance to education and logistics.
+        Startups and enterprises alike are using AI to automate, analyze, and innovate.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>🧪 Quantum Computing is No Longer Sci-Fi</h2>
+      <p>
+        Quantum computers from companies like IBM and Google are solving problems classical computers can't.
+        While we're still early, the impact on encryption, simulation, and research is massive.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>🌐 Blockchain Beyond Crypto</h2>
+      <p>
+        Blockchain is revolutionizing supply chains, voting systems, and even healthcare.
+        Decentralized applications (dApps) and smart contracts are reshaping trust and transparency in business.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>🚀 The Rise of Green Tech</h2>
+      <p>
+        With climate change a global concern, green technologies — solar, EVs, carbon capture — are booming.
+        Innovation in this space is not just saving the planet, but creating jobs and industries.
+      </p>
+    </div>
+
+    <div class="footer">
+      Deployed by Aoun &mdash; Built with Flask 💡
+    </div>
+  </div>
+</body>
+</html>
