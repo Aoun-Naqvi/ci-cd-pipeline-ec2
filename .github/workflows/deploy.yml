@@ -18,10 +18,10 @@ jobs:
       with:
         ssh-private-key: ${{ secrets.EC2_SSH_KEY }}
 
-    - name: Copy code to EC2
+    - name: Copy Only the app folder to EC2
       run: |
         ssh -o StrictHostKeyChecking=no ubuntu@3.92.215.237 "rm -rf /home/ubuntu/app && mkdir -p /home/ubuntu/app"
-        rsync -avz --exclude='.git' ./ ubuntu@3.92.215.237:/home/ubuntu/app
+        rsync -avz --exclude='.git' ./app/ ubuntu@3.92.215.237:/home/ubuntu/app
 
     - name: Install Docker on EC2 and Add Permissions
       run: |
