@@ -28,9 +28,11 @@ jobs:
           sudo systemctl start docker
         EOF
 
-    - name: Copy Code to EC2
+    - name: Copy code to EC2
       run: |
-        scp -o StrictHostKeyChecking=no -r ./ ubuntu@3.92.215.237:/home/ubuntu/app
+        ssh -o StrictHostKeyChecking=no ubuntu@3.92.215.237 "rm -rf /home/ubuntu/app && mkdir -p /home/ubuntu/app"
+        rsync -avz --exclude='.git' ./ ubuntu@3.92.215.237:/home/ubuntu/app
+
 
 
     - name: Deploy on EC2
